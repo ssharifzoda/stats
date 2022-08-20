@@ -1,5 +1,5 @@
-module github.com/ssharifzoda/stats
+module github.com/ssharifzoda/stats/v2
 
 go 1.18
 
-require github.com/ssharifzoda/bank v0.0.0-20220820143124-e9c738cce967 // indirect
+require github.com/ssharifzoda/kun/v2 v2.0.0 // indirect

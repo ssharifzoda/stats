@@ -2,7 +2,7 @@ package stats
 
 import (
 	"fmt"
-	"github.com/ssharifzoda/bank/pkg/bank/types"
+	types "github.com/ssharifzoda/kun/v2"
 )
 
 func ExampleTotalInCategory() {
@@ -10,6 +10,7 @@ func ExampleTotalInCategory() {
 		{
 			Amount:   20,
 			Category: "Esse change",
+			Status:   "FAIL",
 		},
 		{
 			Amount:   13,
@@ -18,8 +19,9 @@ func ExampleTotalInCategory() {
 		{
 			Amount:   21,
 			Category: "Esse change",
+			Status:   "OK",
 		},
 	}
 	fmt.Println(TotalInCategory(payments, "Esse change"))
-	//Output: 41
+	//Output: 21
 }

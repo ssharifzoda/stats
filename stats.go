@@ -1,18 +1,26 @@
 package stats
 
+import types "github.com/ssharifzoda/kun/v2"
+
 func Avg(payments []types.Payment) types.Money {
 	var sum int
+	var count int
 	for _, payment := range payments {
-		sum += int(payment.Amount)
+		if payment.Status != types.StatusFile {
+			sum += int(payment.Amount)
+			count++
+		}
 	}
-	return types.Money(sum / len(payments))
+	return types.Money(sum / count)
 }
 
 func TotalInCategory(payments []types.Payment, category types.Category) types.Money {
 	var sumPayments int
 	for _, payment := range payments {
-		if category == payment.Category {
-			sumPayments += int(payment.Amount)
+		if payment.Status != types.StatusFile {
+			if category == payment.Category {
+				sumPayments += int(payment.Amount)
+			}
 		}
 	}
 	return types.Money(sumPayments)
