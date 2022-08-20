@@ -32,3 +32,12 @@ func CategoriesTotal(payments []types.Payment) map[types.Category]types.Money {
 	}
 	return categories
 }
+func FilterByCategory(payments []types.Payment, category types.Category) []types.Payment {
+	var filtred []types.Payment
+	for _, payment := range payments {
+		if payment.Category == category {
+			filtred = append(filtred, payment)
+		}
+	}
+	return filtred
+}
