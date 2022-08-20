@@ -9,13 +9,17 @@ func ExampleAvg() {
 	payments := []types.Payment{
 		{
 			Amount: 1000,
-			Status: "OK",
+			Status: types.StatusOK,
+		},
+		{
+			Amount: 2000,
+			Status: types.StatusInProgress,
 		},
 		{
 			Amount: 200,
-			Status: "FAIL",
+			Status: types.StatusFile,
 		},
 	}
 	fmt.Println(Avg(payments))
-	//Output:500
+	//Output:1500
 }
