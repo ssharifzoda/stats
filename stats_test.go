@@ -75,3 +75,20 @@ func TestFilterByCategory_MultiFound(t *testing.T) {
 		t.Error("invalid result")
 	}
 }
+func TestCategoryAvg(t *testing.T) {
+	payments := []types.Payment{
+		{ID: 1, Category: "Esse change", Amount: 20},
+		{ID: 2, Category: "Esse change", Amount: 20},
+		{ID: 3, Category: "Esse change", Amount: 20},
+		{ID: 4, Category: "Hot-dog", Amount: 6},
+		{ID: 4, Category: "Hot-dog", Amount: 10},
+	}
+	output := map[types.Category]types.Money{
+		"Esse change": 20,
+		"Hot-dog":     8,
+	}
+	result := CategoryAvg(payments)
+	if !reflect.DeepEqual(output, result) {
+		t.Errorf("Invalid result, output %v, actual %v", output, result)
+	}
+}

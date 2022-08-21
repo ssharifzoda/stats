@@ -41,3 +41,22 @@ func FilterByCategory(payments []types.Payment, category types.Category) []types
 	}
 	return filtred
 }
+func CategoryAvg(payments []types.Payment) map[types.Category]types.Money {
+	categories := map[types.Category]types.Money{}
+	var category types.Category
+	var sum, count types.Money
+	for _, payment := range payments {
+		if payment.Category == category {
+			sum += payment.Amount
+			count++
+			categories[category] = sum / count
+		}
+		if payment.Category != category {
+			category = payment.Category
+			count = 1
+			sum = payment.Amount
+			categories[category] = sum / count
+		}
+	}
+	return categories
+}
